@@ -1,18 +1,19 @@
 // ==UserScript==
-// @name         Show details of bonus
+// @name         PT-Bonus-A
 // @namespace    http://tampermonkey.net/
 // @version      0.0.1
-// @description  try to take over the world!
 // @author       Lepton
-// @homepage     https://github.com/Debuffxb/show-details-of-bonus
+// @updateURL    https://raw.githubusercontent.com/Debuffxb/PT-Bonus-A/master/bonus.js
+// @downloadURL  https://raw.githubusercontent.com/Debuffxb/PT-Bonus-A/master/bonus.js
+// @homepage     https://github.com/Debuffxb/PT-Bonus-A
 // @match        https://moecat.best/torrents*
 // @match        https://pthome.net/torrents*
 // @match        https://www.beitai.pt/torrents*
 // @match        https://pterclub.com/torrents*
 // @match        http://hdhome.org/torrents*
+// @match        http://ourbits.club/torrents*
 // @match        https://pt.btschool.club/torrents*
 // @match        https://www.nicept.net/torrents*
-// @updateURL    https://raw.githubusercontent.com/Debuffxb/show-details-of-bonus/master/bonus.js
 // @grant        none
 // ==/UserScript==
 
@@ -62,6 +63,10 @@
         t0=200;
         n0=7;
     } else if (host == 'www.nicept.net') {
+        i = 1;
+        t0=4;
+        n0=7;
+    } else if (host == 'ourbits.club') {
         i = 1;
         t0=4;
         n0=7;
