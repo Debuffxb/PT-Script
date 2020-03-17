@@ -12,7 +12,7 @@
 // @match        http://hdhome.org/torrents*
 // @match        https://pt.btschool.club/torrents*
 // @match        https://www.nicept.net/torrents*
-// @updateURL    https://raw.githubusercontent.com/Debuffxb/show-details-of-bonus/master/Show-details-of-bonus.js
+// @updateURL    https://raw.githubusercontent.com/Debuffxb/show-details-of-bonus/master/bonus.js
 // @grant        none
 // ==/UserScript==
 
