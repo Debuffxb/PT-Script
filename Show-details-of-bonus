@@ -2,12 +2,15 @@
 // @name         Show details of bonus
 // @namespace    http://tampermonkey.net/
 // @version      0.1
-// @description  Show details of bonus(value of A)
+// @description  try to take over the world!
 // @author       Lepton
 // @match        https://moecat.best/torrents*
 // @match        https://pthome.net/torrents*
 // @match        https://www.beitai.pt/torrents*
 // @match        https://pterclub.com/torrents*
+// @match        http://hdhome.org/torrents*
+// @match        https://pt.btschool.club/torrents*
+// @match        https://www.nicept.net/torrents*
 // @grant        none
 // ==/UserScript==
 
@@ -45,6 +48,18 @@
         t0=4;
         n0=7;
     } else if (host == 'www.beitai.pt') {
+        i = 1;
+        t0=4;
+        n0=7;
+    } else if (host == 'hdhome.org') {
+        i = 1;
+        t0=4;
+        n0=7;
+    } else if (host == 'pt.btschool.club') {
+        i = 1;
+        t0=200;
+        n0=7;
+    } else if (host == 'www.nicept.net') {
         i = 1;
         t0=4;
         n0=7;
