@@ -1,9 +1,10 @@
 // ==UserScript==
 // @name         Show details of bonus
 // @namespace    http://tampermonkey.net/
-// @version      0.0.2
+// @version      0.0.1
 // @description  try to take over the world!
 // @author       Lepton
+// @homepage     https://github.com/Debuffxb/show-details-of-bonus
 // @match        https://moecat.best/torrents*
 // @match        https://pthome.net/torrents*
 // @match        https://www.beitai.pt/torrents*
@@ -11,7 +12,7 @@
 // @match        http://hdhome.org/torrents*
 // @match        https://pt.btschool.club/torrents*
 // @match        https://www.nicept.net/torrents*
-// @updateURL    https://raw.githubusercontent.com/Debuffxb/show-details-of-bonus/master/Show-details-of-bonus
+// @updateURL    https://raw.githubusercontent.com/Debuffxb/show-details-of-bonus/master/Show-details-of-bonus.js
 // @grant        none
 // ==/UserScript==
 
