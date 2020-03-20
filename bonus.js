@@ -1,11 +1,11 @@
 // ==UserScript==
-// @name         PT-Bonus-A
+// @name         PT-Script-Bonus-A
 // @namespace    http://tampermonkey.net/
 // @version      0.0.1
 // @author       Lepton
-// @updateURL    https://raw.githubusercontent.com/Debuffxb/PT-Bonus-A/master/bonus.js
-// @downloadURL  https://raw.githubusercontent.com/Debuffxb/PT-Bonus-A/master/bonus.js
-// @homepage     https://github.com/Debuffxb/PT-Bonus-A
+// @updateURL    https://raw.githubusercontent.com/Debuffxb/PT-Script/master/bonus.js
+// @downloadURL  https://raw.githubusercontent.com/Debuffxb/PT-Script/master/bonus.js
+// @homepage     https://github.com/Debuffxb/PT-Script
 // @match        https://moecat.best/torrents*
 // @match        https://pthome.net/torrents*
 // @match        https://www.beitai.pt/torrents*
