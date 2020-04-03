@@ -14,6 +14,11 @@
 // @match        http://ourbits.club/torrents*
 // @match        https://pt.btschool.club/torrents*
 // @match        https://www.nicept.net/torrents*
+// @match        https://tjupt.org/torrents.php*
+// @match        https://pt.m-team.cc/movie.php*
+// @match        https://pt.m-team.cc/torrents.php*
+// @match        https://pt.m-team.cc/music.php*
+// @match        https://pt.m-team.cc/adult.php*
 // @grant        none
 // ==/UserScript==
 
@@ -70,8 +75,15 @@
         i = 1;
         t0=4;
         n0=7;
-    }
-    // match sites stop
+    } else if (host == 'pt.m-team.cc') {
+        i = 1;
+        t0=4;
+        n0=7;
+    } else if (host == 'tjupt.org') {
+        i = 1;
+        t0=4;
+        n0=7;
+    }// match sites stop
 
 
     head.appendChild(pre);
@@ -121,6 +133,14 @@
             si = parseFloat(si);
         } else if (si.indexOf('TB') != -1) {
             si = parseFloat(si) * 1024;
+        } else if (si.indexOf('KiB') != -1) {
+            si = parseFloat(si) / 1000 /1000;
+        } else if (si.indexOf('MiB') != -1) {
+            si = parseFloat(si) / 1000;
+        } else if (si.indexOf('GiB') != -1) {
+            si = parseFloat(si);
+        } else if (si.indexOf('TiB') != -1) {
+            si = parseFloat(si) * 1000;
         }
         ti = ti.replace(/-/g,"/");
         ti = new Date(ti).getTime();
