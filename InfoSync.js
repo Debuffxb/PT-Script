@@ -15,6 +15,7 @@
 // @match        https://pt.btschool.club/upload*
 // @match        https://www.nicept.net/upload*
 // @match        https://leaguehd.com/upload*
+// @match        https://leaguehd.com/offers.php?add_offer=1
 // @require      https://cdn.bootcss.com/jquery/3.5.0/jquery.js
 // @grant        none
 // ==/UserScript==
@@ -22,6 +23,25 @@
 
 (function() {
     'use strict';
+    var sites = [];
+    var element = [];
+    var content = [];
+
+    //pthome.net
+    sites[0] = 'pthome.net';
+    element[0] = ['name', 'small_descr', 'descr']
+    content[0] = ['name', 'small_descr', 'descr']
+
+    //btschool
+    sites[1] = 'pt.btschool.club';
+    element[1] = ['name', 'small_descr', 'descr', 'imdbid', 'doubanid']
+    content[1] = ['name', 'small_descr', 'descr', 'imdb_url', 'douban_url']
+
+    //leaguehd
+    sites[2] = 'leaguehd.com';
+    element[2] = ['name', 'small_descr', 'body']
+    content[2] = ['name', 'small_descr', 'descr']
+
     var father = document.createElement('div');
     var child = document.createElement('div');
     var css = document.createElement('style');
@@ -154,7 +174,7 @@
     if( window.location.host == 'moecat.best'){
         btn.innerHTML = '上传';
         btn.addEventListener('click', function (){
-            var url = '';
+            var url = 'https://service-hcgq8ojo-1257040192.hk.apigw.tencentcs.com/release/Torrent';
             var data = {
                 "name": document.getElementById('name').value,
                 "douban_url": document.getElementById('external_url').value,
@@ -183,31 +203,35 @@
         });
     } else {
         btn.innerHTML = '同步';
-        btn.addEventListener('click', function (){
-            var url = 'https://service-hcgq8ojo-1257040192.hk.apigw.tencentcs.com/release/Torrent';
-            jQuery.ajax({
-                type: 'GET',
-                url: url,
-                withCredentials: true,
-                cache: false,
-                contentType: false,
-                processData: false,
-                success: function (data) {
-                    if(data.state != 'OK'){
-                        return btn.innerHTML = '失败';
-                    }
-                    document.getElementById('name').value = data.result.name
-                    document.getElementsByName('small_descr')[0].value = data.result.small_descr
-                    document.getElementsByName('imdbid')[0].value = data.result.imdb_url
-                    document.getElementsByName('doubanid')[0].value = data.result.douban_url
-                    document.getElementById('descr').value = data.result.descr
-                    return btn.innerHTML = '成功';
-                },
-                error: function(xhr,state,errorThrown){
-                    alert(state);
-                }
-            });
-        });
+        for(var i = 0; i < sites.length; i++){
+            if(window.location.host == sites[i]){
+                btn.addEventListener('click', function (){
+                    var url = '';
+                    jQuery.ajax({
+                        type: 'GET',
+                        url: url,
+                        withCredentials: true,
+                        cache: false,
+                        contentType: false,
+                        processData: false,
+                        success: function (data) {
+                            if(data.state != 'OK'){
+                                return btn.innerHTML = '失败';
+                            }
+                            for(var j = 0; j < element[i].length; j++){
+                                //console.log(element[i], element[i][j]);
+                                document.getElementsByName(element[i][j])[0].value = data.result[content[i][j]];
+                            }
+                            return btn.innerHTML = '成功';
+                        },
+                        error: function(xhr,state,errorThrown){
+                            alert(state);
+                        }
+                    });
+                });
+                return;
+            }
+        }
     }
     // Your code here...
 })();
