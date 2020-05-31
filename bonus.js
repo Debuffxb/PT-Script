@@ -1,25 +1,31 @@
 // ==UserScript==
+//
 // @name         PT-Script-Bonus-A
 // @namespace    http://tampermonkey.net/
-// @version      0.0.1
+// @version      0.0.2
 // @author       Lepton
 // @updateURL    https://raw.githubusercontent.com/Debuffxb/PT-Script/master/bonus.js
 // @downloadURL  https://raw.githubusercontent.com/Debuffxb/PT-Script/master/bonus.js
 // @homepage     https://github.com/Debuffxb/PT-Script
-// @match        https://moecat.best/torrents*
-// @match        https://pthome.net/torrents*
-// @match        https://www.beitai.pt/torrents*
-// @match        https://pterclub.com/torrents*
-// @match        http://hdhome.org/torrents*
-// @match        http://ourbits.club/torrents*
-// @match        https://pt.btschool.club/torrents*
-// @match        https://www.nicept.net/torrents*
-// @match        https://tjupt.org/torrents.php*
-// @match        https://pt.m-team.cc/movie.php*
-// @match        https://pt.m-team.cc/torrents.php*
-// @match        https://pt.m-team.cc/music.php*
-// @match        https://pt.m-team.cc/adult.php*
-// @grant        none
+// @match        http*://moecat.best/torrents*
+// @match        http*://pthome.net/torrents*
+// @match        http*://www.beitai.pt/torrents*
+// @match        http*://pterclub.com/torrents*
+// @match        http*://hdhome.org/torrents*
+// @match        http*://ourbits.club/torrents*
+// @match        http*://pt.btschool.club/torrents*
+// @match        http*://www.nicept.net/torrents*
+// @match        http*://tjupt.org/torrents.php*
+// @match        http*://pt.m-team.cc/movie.php*
+// @match        http*://pt.m-team.cc/torrents.php*
+// @match        http*://pt.m-team.cc/music.php*
+// @match        http*://pt.m-team.cc/adult.php*
+// @match        http*://pt.m-team.cc/adult.php*
+// @match        http*://hdsky.me/torrents.php*
+// @match        http*://leaguehd.com/torrents.php*
+// @match        http*://www.hddolby.com/torrents.php*
+// @match        http*://hdstreet.club/torrents*
+// @run-at       document-end
 // ==/UserScript==
 
 (function() {
@@ -40,6 +46,9 @@
     after.setAttribute('align', 'center');
     after.innerHTML = "Seeder+1 后 A 值";
 
+    i = 1;
+    t0=4;
+    n0=7;
     // match sites start
     if (host == 'moecat.best'){
         t0 = 15;
@@ -47,43 +56,28 @@
         pre.setAttribute('rowspan', 2);
         after.setAttribute('rowspan', 2);
         i = 2;
-    } else if (host == 'pterclub.com'){
+    }
+
+    if (host == 'pterclub.com'){
         t0 = 26;
         n0 = 7;
         i = 1;
-    } else if (host == 'pthome.net') {
-        i = 1;
-        t0=4;
-        n0=7;
-    } else if (host == 'www.beitai.pt') {
-        i = 1;
-        t0=4;
-        n0=7;
-    } else if (host == 'hdhome.org') {
-        i = 1;
-        t0=4;
-        n0=7;
-    } else if (host == 'pt.btschool.club') {
+    }
+
+    if (host == 'pt.btschool.club') {
         i = 1;
         t0=200;
         n0=7;
-    } else if (host == 'www.nicept.net') {
-        i = 1;
-        t0=4;
-        n0=7;
-    } else if (host == 'ourbits.club') {
-        i = 1;
-        t0=4;
-        n0=7;
-    } else if (host == 'pt.m-team.cc') {
-        i = 1;
-        t0=4;
-        n0=7;
-    } else if (host == 'tjupt.org') {
-        i = 1;
-        t0=4;
-        n0=7;
-    }// match sites stop
+    }
+    if (host == 'hdstreet.club') {
+        t0 = 4;
+        n0 = 7;
+        pre.setAttribute('rowspan', 2);
+        after.setAttribute('rowspan', 2);
+        i = 2;
+    }
+
+    // match sites stop
 
 
     head.appendChild(pre);
@@ -100,7 +94,7 @@
         after.className = "rowfollow";
         after.setAttribute('align', 'center');
         // match sites start
-        if (host == 'moecat.best'){
+        if (host == 'moecat.best' || host == 'hdstreet.club' ){
             pre.setAttribute('rowspan', 2);
             after.setAttribute('rowspan', 2);
             seeder = tr.children[2];
@@ -149,6 +143,14 @@
         var temp = 1 - Math.pow(10, - (ti / t0))
         var pre_res = temp * si * ( 1 + Math.sqrt(2) * Math.pow(10, - ( ni - 1 ) / ( n0 - 1 )));
         var aft_res = temp * si * ( 1 + Math.sqrt(2) * Math.pow(10, - ( ni ) / ( n0 - 1 )));
+        if (host == 'hdsky.me'){
+            pre_res = pre_res * 5 / ni;
+            aft_res = aft_res * 5 / (ni + 1);
+        }
+        if (host == 'leaguehd.com'){
+            pre_res = pre_res / ni;
+            aft_res = aft_res / (ni + 1);
+        }
         pre.innerHTML = parseInt(pre_res);
         after.innerHTML = parseInt(aft_res);
     }
