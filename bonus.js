@@ -2,7 +2,7 @@
 //
 // @name         PT-Script-Bonus-A
 // @namespace    http://tampermonkey.net/
-// @version      0.0.2
+// @version      0.0.3
 // @author       Lepton
 // @updateURL    https://raw.githubusercontent.com/Debuffxb/PT-Script/master/bonus.js
 // @downloadURL  https://raw.githubusercontent.com/Debuffxb/PT-Script/master/bonus.js
@@ -154,4 +154,57 @@
         pre.innerHTML = parseInt(pre_res);
         after.innerHTML = parseInt(aft_res);
     }
+
+    var a = document.getElementsByTagName('tr');
+    //M-Team
+    //去除本页面内所有做种数为0的种子，即断种；并且去除所有加成为20%的官种，避免拖低官种加成(最大为25%)
+    /*
+    for(i = 0; i < a.length; i++){
+        if(a[i].children[1]){
+            if(a[i].children[1].innerHTML.indexOf('+20%') != -1){
+                a[i].parentNode.removeChild(a[i]);
+                i--;
+                continue;
+            }
+        }
+        if(a[i].children[5]){
+            if(a[i].children[5].children[0]){
+                if(parseInt(a[i].children[5].children[0].innerHTML) == 0){
+                    a[i].parentNode.removeChild(a[i]);
+                    i--;
+                }
+            }
+        }
+    }
+    */
+
+
+
+
+    //HDSky
+    //去除本页面内所有做种人数小于min或者大于max的种子以及非官种种子
+    /*
+    var min = 2;
+    var max = 10;
+    for(i = 0; i < a.length; i++){
+        if(a[i].children[1] && a[i].classList[0] == 'progresstr'){
+            if(a[i].children[1].innerHTML.indexOf('官方') == -1 || a[i].children[1].innerHTML.indexOf('禁转') != -1){
+                a[i].parentNode.removeChild(a[i]);
+                i--;
+                continue;
+            }
+        }
+        if(a[i].children[5]){
+            if(a[i].children[5].children[0]){
+                if(a[i].children[5].children[0].children[0]){
+                    if(parseInt(a[i].children[5].children[0].children[0].innerHTML) <= min || parseInt(a[i].children[5].children[0].children[0].innerHTML) > max){
+                        a[i].parentNode.removeChild(a[i]);
+                        i--;
+                    }
+                }
+            }
+        }
+    }
+    */
+
 })();
