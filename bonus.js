@@ -2,7 +2,7 @@
 //
 // @name         PT-Script-Bonus-A
 // @namespace    http://tampermonkey.net/
-// @version      0.0.3
+// @version      0.0.4
 // @author       Lepton
 // @updateURL    https://raw.githubusercontent.com/Debuffxb/PT-Script/master/bonus.js
 // @downloadURL  https://raw.githubusercontent.com/Debuffxb/PT-Script/master/bonus.js
@@ -25,6 +25,8 @@
 // @match        http*://leaguehd.com/torrents.php*
 // @match        http*://www.hddolby.com/torrents.php*
 // @match        http*://hdstreet.club/torrents*
+// @match        https://ourbits.club/rescue*
+// @match        https://springsunday.net/torrents*
 // @run-at       document-end
 // ==/UserScript==
 
@@ -101,7 +103,11 @@
             ti = rs[i + 1].children[1].children[0].title;
             si = rs[i + 1].children[2].innerHTML;
             i++;
-        } else {
+        } else if(host == 'springsunday.net'){
+            seeder = tr.children[6];
+            ti = tr.children[4].children[0].title;
+            si = tr.children[5].innerHTML;
+        }else {
             seeder = tr.children[5];
             ti = tr.children[3].children[0].title;
             si = tr.children[4].innerHTML;
@@ -136,6 +142,10 @@
         } else if (si.indexOf('TiB') != -1) {
             si = parseFloat(si) * 1000;
         }
+
+        if(host == 'springsunday.net')
+            si = Math.sqrt(si);
+
         ti = ti.replace(/-/g,"/");
         ti = new Date(ti).getTime();
         ti = new Date().getTime() - ti;
