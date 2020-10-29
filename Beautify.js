@@ -24,7 +24,7 @@
 // @grant        none
 // @run-at       document-end
 // ==/UserScript==
-// 如果不喜欢这个背景的话可以修改下面的url
+
 (function() {
     'use strict';
 
@@ -105,5 +105,51 @@
             item.style.backgroundColor = `rgba(${classTransparent[i * 4]},${classTransparent[i * 4 + 1]},${classTransparent[i * 4 + 2]},${classTransparent[i * 4 + 3]}`;
         }
     })
+
+    var a = document.getElementsByTagName('tr');
+    //M-Team
+    /*
+    for(var i = 0; i < a.length; i++){
+        if(a[i].children[1]){
+            if(a[i].children[1].innerHTML.indexOf('+20%') != -1){
+                a[i].parentNode.removeChild(a[i]);
+                i--;
+                continue;
+            }
+        }
+        if(a[i].children[5]){
+            if(a[i].children[5].children[0]){
+                if(parseInt(a[i].children[5].children[0].innerHTML) == 0){
+                    a[i].parentNode.removeChild(a[i]);
+                    i--;
+                }
+            }
+        }
+    }
+*/
+
+
+
+
+    //HDSky
+/*     for(var i = 0; i < a.length; i++){
+        if(a[i].children[1] && a[i].classList[0] == 'progresstr'){
+            if(a[i].children[1].innerHTML.indexOf('官方') == -1 || a[i].children[1].innerHTML.indexOf('禁转') != -1){
+                a[i].parentNode.removeChild(a[i]);
+                i--;
+                continue;
+            }
+        }
+        if(a[i].children[5]){
+            if(a[i].children[5].children[0]){
+                if(a[i].children[5].children[0].children[0]){
+                    if(parseInt(a[i].children[5].children[0].children[0].innerHTML) <= 2 || parseInt(a[i].children[5].children[0].children[0].innerHTML) > 10){
+                        a[i].parentNode.removeChild(a[i]);
+                        i--;
+                    }
+                }
+            }
+        }
+    } */
     // Your code here...
 })();
