@@ -27,7 +27,7 @@
 
 (function() {
     'use strict';
-
+    let pic_url = '';
     if(document.getElementsByClassName('mainouter')[0]){
         document.getElementsByClassName('mainouter')[0].style.width = "90%";
         document.getElementsByClassName('mainouter')[0].style.minWidth = "810px";
@@ -45,7 +45,7 @@
         document.getElementsByClassName('main')[1].style.backgroundColor = "rgba(0,0,0,0)";
     }
 
-    document.getElementsByTagName('body')[0].style.background = 'url("http://aventador.womoe.top/file/GAIICJISHV.png") no-repeat center top';
+    document.getElementsByTagName('body')[0].style.background = `url("${pic_url}") no-repeat center top`;
     document.getElementsByTagName('body')[0].style.backgroundSize = 'cover';
     document.getElementsByTagName('body')[0].style.backgroundAttachment = 'fixed';
 
