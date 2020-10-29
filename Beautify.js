@@ -27,6 +27,7 @@
 
 (function() {
     'use strict';
+    //图片地址
     let pic_url = '';
     if(document.getElementsByClassName('mainouter')[0]){
         document.getElementsByClassName('mainouter')[0].style.width = "90%";
